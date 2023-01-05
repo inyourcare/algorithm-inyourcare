@@ -111,4 +111,22 @@ void main(){
     printf("%d\n", list[i]);
   }
 }
+``` 
+
+## 라이브러리 정렬 sort 함수 사용
+- 정렬 기준 설정 가능
 ```
+bool compare(int a, int b) {
+  return a<b;
+}
+
+sort(a,a+10,compare)
+```
+
+## 힙정렬
+- 시간복잡도: O(N*logN)
+- 완전이진트리: 왼쪽부터 데이터 들어감
+- 힙: 부모가 더 큰 값을 가지는 이진트리 
+- Heapify: 힙구조가 무너진것을 바로세움 
+- Heapify 의 시간복잡도: O(N) -> 잎사귀 노드를 제외하고 연산하므로 (N/2) * logN 이고 logN 이 2보다 클 수 없으므로
+- Heapify 를 통해 최대값 또는 최소값을 계속 계산하고 정렬함(index상 가장 뒤로 보낸다.) -> 시간복잡도가 N번만큼 수행하므로 O(N*logN)
