@@ -21,4 +21,10 @@ function readLine(): string {
 
 function main() {
   // Enter your code here
+  let nodeCnt = readLine()
+  let nodeVals = readLine()
+  let children = readLine()
+  process.stdout.write(nodeCnt)
+  process.stdout.write(nodeVals)
+  process.stdout.write(children)
 }
