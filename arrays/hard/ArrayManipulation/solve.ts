@@ -36,16 +36,20 @@ function arrayManipulation(n: number, queries: number[][]): number {
   // Write your code here
   // console.log('given n is' , n)
   const arr = new Array(n).fill(0);
+  let max = 0
   // console.log('arr created ',arr)
   for (let i = 0; i < queries.length; i++) {
     const [start,end,val] = queries[i];
     // console.log(start,end,val)
     for (let j = start-1; j < end; j++) {
       arr[j]+=val;
+      if (arr[j]>max)
+        max = arr[j]
     }
     // console.log(i,'operaction done, arr is',arr)
   }
-  return Math.max(...arr);
+  // return Math.max(...arr);
+  return max;
 }
 
 function main() {
