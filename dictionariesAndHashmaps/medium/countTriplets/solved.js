@@ -82,13 +82,14 @@ function countTriplets(arr, r) {
     const aKey = arr[i];
     const arKey = aKey / r
     const arrKey = aKey / rr
-    manageKeyList(keyListDic, aKey, 0)
-    if (arKey % 1 === 0)
-      manageKeyList(keyListDic, arKey, 1)
+    
     if (arrKey % 1 === 0)
       manageKeyList(keyListDic, arrKey, 2)
+    if (arKey % 1 === 0)
+      manageKeyList(keyListDic, arKey, 1)
+    manageKeyList(keyListDic, aKey, 0)
   }
-  console.log(keyListDic)
+  // console.log(keyListDic)
   for (var listKey in keyListDic) {
     // list is like [0,1,1,2,1]
     const list = keyListDic[listKey]
@@ -129,64 +130,6 @@ function countTriplets(arr, r) {
   }
   return ans
 }
-
-// function countTriplets(arr, r) {
-//   const keyListDic = {}
-//   const rr = r * r
-//   for (let i = 0; i < arr.length; i++) {
-//     const aKey = arr[i];
-//     const arKey = aKey / r
-//     const arrKey = aKey / rr
-//     manageKeyList(keyListDic, aKey, 0)
-//     if (arKey % 1 === 0)
-//       manageKeyList(keyListDic, arKey, 1)
-//     if (arrKey % 1 === 0)
-//       manageKeyList(keyListDic, arrKey, 2)
-//   }
-//   // console.log(keyListDic)
-//   for (var listKey in keyListDic) {
-//     // list is like [0,1,1,2,1]
-//     const list = keyListDic[listKey]
-//     let zeros = 0;
-//     let ones = 0;
-//     let twos = 0;
-//     // console.log('list', list)
-//     let startIdx = 0
-//     // while (startIdx < list.length && list[startIdx] !== 0) startIdx++
-//     // for (let i = startIdx; i < list.length; i++) {
-//     //   const val = list[i]
-//     //   val === 0 && zeros++ || val === 1 && ones++ || val === 2 && twos++
-//     // }
-//     // console.log(list, zeros, ones, twos)
-//     let targetVal = 0
-//     let curIdx = 0
-//     // let prevIdx = -1
-//     // console.log(list)
-//     console.log('###################')
-//     while (curIdx !== -1) {
-//       curIdx = list.indexOf(targetVal, curIdx)
-//       const cnt = lengthOfSameVal(list, curIdx)
-//       console.log(curIdx, list[curIdx], cnt, targetVal)
-//       if (curIdx !== -1) {
-//         if (targetVal === 0) zeros += cnt
-//         else if (targetVal === 1) ones += cnt
-//         else if (targetVal === 2) twos += cnt
-//       }
-//       // console.log(curIdx,targetVal,cnt)
-//       // console.log(targetVal, prevIdx, curIdx)
-//       // if (prevIdx != -1) {
-//       //   const curIdxVal = (curIdx === -1 ? list.length - 1 : curIdx)
-//       //   if (targetVal === 0) twos += curIdxVal - prevIdx
-//       //   else if (targetVal === 1) zeros += curIdxVal - prevIdx
-//       //   else if (targetVal === 2) ones += curIdxVal - prevIdx
-//       // }
-//       targetVal = (targetVal + 1) % 3
-//       // prevIdx = curIdx
-//     }
-//     console.log(list, zeros, ones, twos)
-//   }
-//   return 0
-// }
 
 function main() {
   const ws = fs.createWriteStream('output.txt');
