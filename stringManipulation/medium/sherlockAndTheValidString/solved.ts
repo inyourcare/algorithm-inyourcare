@@ -46,19 +46,29 @@ function isValid(s: string): string {
   // console.log(Object.keys(chCntDic));
 
   // cnt === 1 => remove it and check all individuals are the same
-  // [3,2,4] case 
+  // [3,2,4] case
   const keys = Object.keys(chCntDic);
   const firstCnt = chCntDic[keys[0]];
-  for (let i = 1; i < keys.length; i++) {
+  let prev = -1;
+  let higher = -1;
+  let lower = -1;
+  for (let i = 0; i < keys.length; i++) {
     const cnt = chCntDic[keys[i]];
-    const abs = Math.abs(firstCnt - cnt);
-    if (abs > 1) return "NO";
-    else if (abs === 1) {
-      const higher = Math.max(firstCnt, cnt);
-      if (keys.filter((k) => chCntDic[k] === higher).length > 1) return "NO";
+    if (prev !== cnt) {
+      higher = Math.max(prev, cnt);
+      lower = Math.min(prev, cnt);
     }
+    prev = cnt;
   }
-  return "YES";
+  const higherCnt = keys.filter((k) => chCntDic[k] === higher).length;
+  const lowerCnt = keys.filter((k) => chCntDic[k] === lower).length;
+  if (higherCnt === keys.length) return "YES";
+  if (higherCnt === 1 && lowerCnt === keys.length - 1 && higher - lower === 1)
+    return "YES";
+  if (higherCnt === keys.length - 1 && lower === 1) return "YES";
+  // if (higher - lower > 1) return "NO";
+
+  return "NO";
 }
 
 function main() {
