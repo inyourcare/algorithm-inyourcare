@@ -29,6 +29,8 @@ function getMinimumCost(k, c) {
   // k is the number of buyers , c is an array of flower prices.
   // console.log(k, c)
   let cost = 0
+  c.sort((a,b)=>a-b)
+  console.log(c)
   for (let i = c.length - 1; i >= 0; i--) {
     const price = c[i];
     cost += price * (1 + Math.floor((c.length - i - 1)/k))
