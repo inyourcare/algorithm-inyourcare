@@ -34,8 +34,9 @@ function readLine(): string {
 
 function abbreviation(a: string, b: string): string {
   // Write your code here
-  console.log(a, b); // a:97 A:65
+  // console.log(a, b); // a:97 A:65
   let aIdx = 0;
+  let prevAIdx = -1;
   for (let i = 0; i < b.length; i++) {
     if (aIdx >= a.length) return "NO";
     const ch = b[i];
@@ -45,16 +46,33 @@ function abbreviation(a: string, b: string): string {
       a[aIdx].charCodeAt(0) !== chAscii &&
       a[aIdx].charCodeAt(0) - 32 !== chAscii
     ) {
-      if (65 <= a[aIdx].charCodeAt(0) && 96 >= a[aIdx].charCodeAt(0))
-        return "NO";
+      if (65 <= a[aIdx].charCodeAt(0) && 96 >= a[aIdx].charCodeAt(0)) {
+        if (
+          prevAIdx !== -1 &&
+          a[prevAIdx].charCodeAt(0) !== a[aIdx].charCodeAt(0) + 32
+        )
+          return "NO";
+      }
       aIdx++;
       if (aIdx >= a.length) return "NO";
     }
     console.log(ch, a[aIdx]);
+    prevAIdx = aIdx;
     aIdx++;
   }
-  for (let i = aIdx; i < a.length; i++) {
-    if (65 <= a[i].charCodeAt(0) && 96 >= a[i].charCodeAt(0)) return "NO";
+  if (65 <= a[prevAIdx].charCodeAt(0) && 96 >= a[prevAIdx].charCodeAt(0)) {
+    for (let i = aIdx; i < a.length; i++) {
+      if (65 <= a[i].charCodeAt(0) && 96 >= a[i].charCodeAt(0)) return "NO";
+    }
+  } else {
+    let capitalCnt = 0;
+    for (let i = aIdx; i < a.length; i++) {
+      if (a[i].charCodeAt(0) === a[prevAIdx].charCodeAt(0) - 32) capitalCnt++;
+      else if (65 <= a[i].charCodeAt(0) && 96 >= a[i].charCodeAt(0)) {
+        return "NO";
+      }
+    }
+    if (capitalCnt > 1) return "NO";
   }
   return "YES";
 }
