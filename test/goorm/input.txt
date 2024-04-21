@@ -1,0 +1,4 @@
+4 2
+RA LW LD JX
+LW JX
+LD JX
