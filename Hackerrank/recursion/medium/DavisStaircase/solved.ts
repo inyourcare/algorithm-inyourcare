@@ -1,7 +1,7 @@
 "use strict";
 
 import { WriteStream, createWriteStream } from "fs";
-import { factorial } from "../../../common/MathUtil";
+import { factorial } from "../../../../common/typesciprt/MathUtil";
 process.stdin.resume();
 process.stdin.setEncoding("utf-8");
 

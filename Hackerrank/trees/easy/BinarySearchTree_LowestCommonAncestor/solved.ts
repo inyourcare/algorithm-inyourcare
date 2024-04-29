@@ -1,9 +1,9 @@
 "use strict";
 
 import {
-    BinarySearchTree,
-    NumbersComparator,
-} from "../../../common/BinarySearchTree";
+  BinarySearchTree,
+  NumbersComparator,
+} from "../../../../common/typesciprt/BinarySearchTree";
 
 process.stdin.resume();
 process.stdin.setEncoding("utf-8");

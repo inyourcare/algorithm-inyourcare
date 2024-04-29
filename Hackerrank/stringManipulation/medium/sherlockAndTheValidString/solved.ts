@@ -1,7 +1,7 @@
 "use strict";
 
 import { WriteStream, createWriteStream } from "fs";
-import { MyDict } from "../../../common/MyDict";
+import { MyDict } from "../../../../common/typesciprt/MyDict";
 process.stdin.resume();
 process.stdin.setEncoding("utf-8");
 
